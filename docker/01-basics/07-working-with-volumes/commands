@@ -1,0 +1,9 @@
+
+# creating a new volume
+docker volume create my-volume
+
+# attaching a volume to a container
+docker run -it -d --name nginx -p 8080:80 --mount type=volume,source=my-volume,target=/usr/share/nginx/html nginx
+
+# second option to attach a volume to a container
+docker run -it -d --name nginx -p 8080:80 -v my-volume:/usr/share/nginx/html nginx

@@ -1,0 +1,12 @@
+
+#listing all networks
+docker network ls
+
+# creating first container
+docker run -it -d --name ubuntu1 --network my-bridge bash
+
+# creating second container
+docker run -it -d --name ubuntu2 --network my-bridge bash
+
+# creating third container without a network
+docker run -it -d --name ubuntu3 bash

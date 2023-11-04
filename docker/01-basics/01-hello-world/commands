@@ -1,0 +1,8 @@
+# executes a basic docker image
+docker run hello-world
+
+# lists all running containers
+docker ps
+
+# lists all running and stoped containers
+docker ps -a

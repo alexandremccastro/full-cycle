@@ -1,0 +1,4 @@
+
+# builds the image
+
+docker build -t alexandremccastro/nginx-with-vim .

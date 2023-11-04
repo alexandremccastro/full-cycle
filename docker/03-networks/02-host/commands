@@ -1,0 +1,6 @@
+
+# creating the container with host network
+docker run -it -d --name nginx --network host nginx
+
+# getting http response
+curl http://localhost

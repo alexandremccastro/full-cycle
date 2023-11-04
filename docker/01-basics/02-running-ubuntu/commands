@@ -1,0 +1,6 @@
+
+# runs and atach container process to the terminal
+docker run -it ubuntu:latest /bin/bash
+
+# runs the container but deletes the content after process if finished
+docker run -it --rm ubuntu:latest /bin/bash

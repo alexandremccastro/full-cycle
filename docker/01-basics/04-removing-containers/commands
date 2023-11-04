@@ -1,0 +1,8 @@
+# starts container execution
+docker start CONTAINER_ID OR CONTAINER_NAME
+
+# stops container execution
+docker stop CONTAINER_ID OR CONTAINER_NAME
+
+# deletes the container
+docker rm CONTAINER_ID OR CONTAINER_NAME

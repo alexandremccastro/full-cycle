@@ -1,0 +1,6 @@
+
+# places a custom name before container creation
+docker run --rm -d --name CUSTOM_NAME -p 8080:80 CONTAINER_NAME
+
+# executes the bash inside a container
+docker exec -it CONTAINER_NAME bash

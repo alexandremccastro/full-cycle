@@ -1,0 +1,6 @@
+
+# executing a container with the html binded with the computer folder
+docker run -it -d --name nginx -p 8080:80 -v "$(pwd)"/01-docker/06-using-bind-mounts/html:/usr/share/nginx/html nginx
+
+# second option for execution using --mount flag
+docker run -it -d --name nginx -p 8080:80 --mount type=bind,source="$(pwd)"/01-docker/06-using-bind-mounts/html,target=/usr/share/nginx/html nginx

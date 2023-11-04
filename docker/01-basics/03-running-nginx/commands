@@ -1,0 +1,9 @@
+
+# basic execution
+docker run nginx:latest
+
+# specifying the container target port and access port
+docker run -p 8080:80 nginx:latest
+
+# detaching the container execution from terminal
+docker run -d -p 8080:80 nginx:latest

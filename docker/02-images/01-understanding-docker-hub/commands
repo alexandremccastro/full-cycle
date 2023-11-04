@@ -1,0 +1,11 @@
+# downloads the image of ubuntu
+
+docker pull ubuntu
+
+# list all images
+
+docker images
+
+# remove an given image
+
+docker image rm IMAGE_ID
