@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    container_name: node-challenge-mysql
+    hostname: node-challenge-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    expose:
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "node-challenge-mysql"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - mysql-node-challenge:/var/lib/mysql
+    networks:
+      - node-challenge-network
+  api:
+    container_name: node-challenge-api
+    hostname: node-challenge-api
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - node-challenge-network
+  nginx:
+    container_name: node-challenge-nginx
+    hostname: node-challenge-nginx
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./logs:/var/log/nginx
+    networks:
+      - node-challenge-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  mysql-node-challenge:
+    driver: local
+    name: mysql-node-challenge
+
+networks:
+  node-challenge-network:
+    driver: bridge
+    name: node-challenge-network
