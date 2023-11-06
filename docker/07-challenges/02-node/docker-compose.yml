@@ -38,7 +38,7 @@ services:
     hostname: node-challenge-nginx
     image: nginx:alpine
     ports:
-      - 80:80
+      - 8080:80
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./logs:/var/log/nginx
